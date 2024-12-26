@@ -1,5 +1,5 @@
-import { Exclude } from 'class-transformer';
-import { ApiProperty } from '@nestjs/swagger';
+import { Exclude, Type } from 'class-transformer';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import {
   IsString,
   IsNotEmpty,
@@ -8,8 +8,10 @@ import {
   IsArray,
   IsJSON,
   Length,
+  ArrayNotEmpty,
 } from 'class-validator';
 import { ArticleVisibility, Article } from './article.interface';
+import { PageOptionsDTO } from '../../common/DTO/page.dtos';
 
 export class ArticleCreatingDTO implements Article {
   @Exclude()
@@ -117,4 +119,17 @@ export class ArticleUpdatingDTO implements Partial<Article> {
 
   @Exclude()
   deleted?: boolean;
+}
+
+export class ArticleQueryOptions extends PageOptionsDTO {
+  @ApiPropertyOptional({
+    description: 'Filter articles by tags. Must be an array of strings.',
+    example: ['nestjs', 'typescript'],
+  })
+  @IsOptional()
+  @IsArray()
+  @Type(() => String)
+  @IsString({ each: true })
+  @ArrayNotEmpty()
+  tags?: string[];
 }
