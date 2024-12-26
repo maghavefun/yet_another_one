@@ -31,6 +31,10 @@ npm run start:dev
 npm run start:prod
 ```
 
+## Swagger docs
+
+API documentation for dev env is available by [link](http://localhost:4000/api-docs#/)
+
 ## Starting project with docker locally
 
 To install docker use this guide[LINK](https://docs.docker.com/engine/install/)
