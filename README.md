@@ -1,9 +1,11 @@
 ## Clone the project
 
 ```bash
-git clone https://github.com/maghavefun/pg_rest_test
+git clone https://github.com/maghavefun/yet_another_one.git
 ```
+
 # How to start the project
+
 ## Local installation of project(not recommended)
 
 ```bash
@@ -111,15 +113,16 @@ npm run prestart:prod
 Commands seed:make and seed:run is used to fullfill tables with initial data. It's useful when developing, testing and production initialization.
 
 seed:make can be used to create new file with data, that will be append to table
+
 ```bash
 npm run seed:make name_of_seed
 ```
 
 seed:run executes seed files, and appends data to table
+
 ```bash
 npm run seed:run
 ```
-
 
 ## How to commit properly with conventional commits
 
@@ -129,11 +132,13 @@ template. You can check the specification here: [LINK](https://www.conventionalc
 TLDR
 use:
 To fix branches
+
 ```bash
 git commit -m "fix: I did the fix"
 ```
 
 For feature branches:
+
 ```bash
 git commit -m "feat: I made the feature, wow"
 ```
@@ -148,7 +153,8 @@ git commit -m "feat!: some feature with breaking changes"
 git commit -m "BREAKING CHANGE: some breaking changes"
 ```
 
-You can use git editor, that will be your default editor in system by using just git commit without -m flag and message 
+You can use git editor, that will be your default editor in system by using just git commit without -m flag and message
+
 ```bash
 git commit
 ```
