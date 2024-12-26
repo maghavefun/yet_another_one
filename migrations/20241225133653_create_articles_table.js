@@ -9,7 +9,7 @@ exports.up = function (knex) {
 			table.increments('id').primary();
 			table.string('title').notNullable();
 			table.text('content').notNullable();
-			table.jsonb('tags').notNullable().defaultTo('{}');
+			table.jsonb('tags').notNullable().defaultTo('[]');
 			table.enu('visibility', ['public', 'internal']).notNullable();
 			table.timestamp('create_at').defaultTo(knex.fn.now());
 			table.timestamp('updated_at'.defaultTo(knex.fn.now()));

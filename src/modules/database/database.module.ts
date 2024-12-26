@@ -4,17 +4,17 @@ import { KnexService } from './knex.service';
 
 @Global()
 @Module({
-	providers: [
-		{
-			provide: KnexService,
-			useFactory: async (configService: ConfigService) => {
-				const knexService = new KnexService(configService);
-				await knexService.init();
-				return knexService;
-			},
-			inject: [ConfigService],
-		},
-	],
-	exports: [KnexService],
+  providers: [
+    {
+      provide: KnexService,
+      useFactory: async (configService: ConfigService) => {
+        const knexService = new KnexService(configService);
+        await knexService.init();
+        return knexService;
+      },
+      inject: [ConfigService],
+    },
+  ],
+  exports: [KnexService],
 })
 export class DatabaseModule {}
