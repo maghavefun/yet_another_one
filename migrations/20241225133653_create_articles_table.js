@@ -11,8 +11,8 @@ exports.up = function (knex) {
 			table.text('content').notNullable();
 			table.jsonb('tags').notNullable().defaultTo('[]');
 			table.enu('visibility', ['public', 'internal']).notNullable();
-			table.timestamp('create_at').defaultTo(knex.fn.now());
-			table.timestamp('updated_at'.defaultTo(knex.fn.now()));
+			table.timestamp('created_at').defaultTo(knex.fn.now());
+			table.timestamp('updated_at').defaultTo(knex.fn.now());
 			// Parameter that shows if article is deleted(logically)
 			table.boolean('deleted').defaultTo(false);
 		});
