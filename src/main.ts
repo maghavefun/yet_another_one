@@ -17,8 +17,12 @@ async function bootstrap() {
   app.use(cookieParser());
   await app.listen(port);
 
-  const env = configService.get('NODE_ENV');
-  if (env === 'dev') {
+  const isProduction = configService.get('NODE_ENV') === 'production';
+
+  if (isProduction) {
+    Logger.overrideLogger(['error', 'warn']);
+  } else {
+    Logger.overrideLogger(['log', 'error', 'warn', 'debug', 'verbose']);
     logger.log(`Backend app is running on http://localhost:${port}`);
   }
 }

@@ -28,7 +28,6 @@ import { RegistrationDTO } from './auth.dtos';
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
-  private readonly logger = new Logger(AuthController.name);
 
   @HttpCode(HttpStatus.CREATED)
   @Post('register')
@@ -101,7 +100,7 @@ export class AuthController {
   @Post('refresh')
   @ApiBearerAuth('jwt')
   @ApiOkResponse({
-    description: 'Tocken successfully refreshed',
+    description: 'Token successfully refreshed',
   })
   @ApiUnauthorizedResponse({
     description: 'Unauthorized user',

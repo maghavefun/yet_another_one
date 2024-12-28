@@ -5,14 +5,14 @@ import {
 } from '@nestjs/common';
 import { KnexService } from '../database/knex.service';
 import { UserCreatingDTO } from './user.dtos';
-import { UserWithUserPassword } from './user.interface';
+import { User, UserWithUserPassword } from './user.interface';
 
 @Injectable()
 export class UserService {
   private readonly logger = new Logger(UserService.name);
   constructor(private readonly knexService: KnexService) {}
 
-  async createOne(userDTO: UserCreatingDTO) {
+  async createOne(userDTO: UserCreatingDTO): Promise<User> {
     const knex = this.knexService.getKnex();
 
     try {
@@ -53,7 +53,7 @@ export class UserService {
           'users.username',
           'user_passwords.password_hash',
         )
-        .where({ 'users.email': email })
+        .where('users.email', email)
         .first();
       return foundUser;
     } catch (err) {

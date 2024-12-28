@@ -164,7 +164,7 @@ export class ArticleService {
 
   async findArticles(
     articleQueryOptions: ArticleQueryOptions,
-  ): Promise<PageDTO<Article[]> | HttpException> {
+  ): Promise<PageDTO<Article> | HttpException> {
     const knex = this.knexService.getKnex();
     const { limit, offset, order } = articleQueryOptions;
 
@@ -206,7 +206,7 @@ export class ArticleService {
 
   async findArticlesByTags(
     articleQueryOptions: ArticleQueryOptions,
-  ): Promise<PageDTO<Article[]> | HttpException> {
+  ): Promise<PageDTO<Article> | HttpException> {
     const knex = this.knexService.getKnex();
     const { tags, limit, offset, order } = articleQueryOptions;
 

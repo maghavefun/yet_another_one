@@ -147,7 +147,7 @@ export class ArticleController {
   @ApiUnauthorizedResponse({ description: 'Unauthorized response' })
   async getArticles(
     @Query() articleQueryOptions: ArticleQueryOptions,
-  ): Promise<PageDTO<Article[]> | HttpException> {
+  ): Promise<PageDTO<Article> | HttpException> {
     this.logger.log(
       `Handling GET request /article/${JSON.stringify(articleQueryOptions)}`,
     );
